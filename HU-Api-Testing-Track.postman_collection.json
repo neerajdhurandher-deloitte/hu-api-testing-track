@@ -50,7 +50,9 @@
 							"   pm.expect(isString).to.eql(true);\r",
 							"\r",
 							"});\r",
-							""
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -97,6 +99,9 @@
 							"    pm.response.to.be.header(\"Content-Type\",\"application/json; charset=utf-8\");\r",
 							"\r",
 							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
 							""
 						],
 						"type": "text/javascript"
@@ -135,6 +140,10 @@
 							"pm.test(\"Response time is less than 400ms\", function () {\r",
 							"\r",
 							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Verify content type\", function(){\r",
@@ -200,6 +209,10 @@
 							"\r",
 							"    pm.expect(responseData.length == 0);\r",
 							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
 							""
