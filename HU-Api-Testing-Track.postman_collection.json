@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "2f76d71e-b7ea-4d14-ac1a-a5c35ccbac58",
+		"name": "HU-Api-Testing-Track",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Checking the response time\r",
+							"\r",
+							"let responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify content type\", function(){\r",
+							"\r",
+							"    pm.response.to.be.header(\"Content-Type\",\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify User with 'id' 40 has 'userId'=4 \", function(){\r",
+							"\r",
+							"    let userId = responseData[39].userId;\r",
+							"\r",
+							"   pm.expect(userId).to.eql(4);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Every user contains 'title' and its type is String\",function(){\r",
+							"\r",
+							"    let isString = true;\r",
+							"\r",
+							"    for(let i=0;i<a.length;i++){\r",
+							"\r",
+							"        if(typeof(a[i].title) != \"string\" ){\r",
+							"            isString=false\r",
+							"            break;\r",
+							"        }\r",
+							"}\r",
+							"\r",
+							"   pm.expect(isString).to.eql(true);\r",
+							"\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{JSPDomain}}/posts",
+					"host": [
+						"{{JSPDomain}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify content type\", function(){\r",
+							"\r",
+							"    pm.response.to.be.header(\"Content-Type\",\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":{{name}},\r\n    \"job\":{{job}}\r\n}"
+				},
+				"url": {
+					"raw": "{{ReqresDomain}}/api/users",
+					"host": [
+						"{{ReqresDomain}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify content type\", function(){\r",
+							"\r",
+							"    pm.response.to.be.header(\"Content-Type\",\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Verify User name and job are updated \", function(){\r",
+							"\r",
+							"//     let newJob = responseData[0].job;\r",
+							"\r",
+							"//    pm.expect(newJob).to.eql(\"Manager\");\r",
+							"\r",
+							"// });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Arun\",\r\n    \"job\":\"Manager\"\r\n}"
+				},
+				"url": {
+					"raw": "{{ReqresDomain}}/api/users/",
+					"host": [
+						"{{ReqresDomain}}"
+					],
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify content type\", function(){\r",
+							"\r",
+							"    pm.response.to.be.header(\"Content-Type\",\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify the content is deleted successfully\", function(){\r",
+							"\r",
+							"    pm.expect(responseData.length == 0);\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{JSPDomain}}/posts/1",
+					"host": [
+						"{{JSPDomain}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
